@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-if (args is not [var file]) {
+﻿if (args is not [var file]) {
     Exit("day1 <input>");
     return;
 }
@@ -29,8 +27,7 @@ async Task<List<Elf>> ReadElfDataAsync(string file)
     elfs.Add(currentElf);
     foreach (var line in lines) {
         if (line.Length == 0) {
-            currentElf = new();
-            elfs.Add(currentElf);
+            elfs.Add(currentElf = new());
             continue;
         }
 
