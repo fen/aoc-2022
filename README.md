@@ -14,12 +14,20 @@ __( :  )|___
 
 Prerequisite to run [.NET 7][1]
 
-Execute with:
+**Run on Windows**:
 
 ```
-.\aoc <day> <input>
+> .\aoc
+aoc <day> <inpt>
+> .\aoc day1 .\inputs\day_1.input
+```
 
-.\aoc day1 .\inputs\day_1.input
+**Run on Linux**:
+
+```
+$ ./aoc
+aoc <day> <input>
+$ ./aoc day1 ./input/day_1.input
 ```
 
 [1]: https://dotnet.microsoft.com/en-us/
