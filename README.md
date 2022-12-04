@@ -7,6 +7,7 @@
 __( :  )|___
 ```
 
-- [Day 1](./day1/Program.cs)
-- [Day 2](./day2/Program.cs)
-- [Day 3](./day3/Program.cs)
+-   [Day 1](./day1/Program.cs)
+-   [Day 2](./day2/Program.cs)
+-   [Day 3](./day3/Program.cs)
+-   [Day 4](./day4/Program.cs)
