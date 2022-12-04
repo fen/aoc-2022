@@ -1,9 +1,7 @@
-﻿if (args is not [var file]) {
-    Exit("day2 <input>");
+﻿if (args is not [var file] || !File.Exists(file)) {
+    Console.WriteLine("day2 <input>");
     return;
 }
-
-if (!File.Exists(file)) Exit($"File {file} does not exist");
 
 var plays = await ParseAsync(file);
 
@@ -102,13 +100,6 @@ async Task<List<Play>> ParseAsync(string file)
     return plays;
 }
 
-[DoesNotReturn]
-static void Exit(string msg)
-{
-    Console.WriteLine(msg);
-    Environment.Exit(-1);
-}
-
 readonly record struct Play(Shape Opponent, Shape Me, Outcome Outcome);
 
 enum Shape : byte
@@ -123,13 +114,4 @@ enum Outcome : byte
     Lose, // X
     Draw, // Y
     Win,  // Z
-}
-
-static class Ext
-{
-    public static void Deconstruct<T>(this T[] seq, out T first, out T second)
-    {
-        first = seq[0];
-        second = seq[1];
-    }
 }

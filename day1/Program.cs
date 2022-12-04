@@ -1,9 +1,7 @@
-﻿if (args is not [var file]) {
-    Exit("day1 <input>");
+﻿if (args is not [var file] || !File.Exists(file)) {
+    Console.WriteLine("day1 <input>");
     return;
 }
-
-if (!File.Exists(file)) Exit($"File {file} does not exist");
 
 var elves = await ReadElfDataAsync(file);
 
@@ -37,13 +35,6 @@ async Task<List<Elf>> ReadElfDataAsync(string file)
     }
 
     return elfs;
-}
-
-[DoesNotReturn]
-static void Exit(string msg)
-{
-    Console.WriteLine(msg);
-    Environment.Exit(-1);
 }
 
 public class Elf

@@ -7,23 +7,7 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Using Include="System.Diagnostics.CodeAnalysis" />
-  </ItemGroup>
-
-  <PropertyGroup>
-    <PublishAot>true</PublishAot>
-    <IlcOptimizationPreference>Size</IlcOptimizationPreference>
-    <IlcDisableReflection>true</IlcDisableReflection>
-
-    <EventSourceSupport>false</EventSourceSupport>
-    <UseSystemResourceKeys>true</UseSystemResourceKeys>
-    <StripSymbols>true</StripSymbols>
-    <InvariantGlobalization>true</InvariantGlobalization>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="PublishAotCompressed" Version="1.0.0" />
-  </ItemGroup>
+  <Import Project="../Aot.targets" />
+  <Import Project="../help/Help.targets" />
 
 </Project>

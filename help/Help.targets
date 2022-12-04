@@ -1,0 +1,7 @@
+<Project>
+    <ItemGroup>
+        <Compile Include="../help/Helpers.cs">
+          <Link>Helpers.cs</Link>
+        </Compile>
+    </ItemGroup>
+</Project>
