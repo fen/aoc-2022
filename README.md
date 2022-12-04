@@ -11,3 +11,15 @@ __( :  )|___
 -   [Day 2](./day2/Program.cs)
 -   [Day 3](./day3/Program.cs)
 -   [Day 4](./day4/Program.cs)
+
+Prerequisite to run [.NET 7][1]
+
+Execute with:
+
+```
+.\aoc <day> <input>
+
+.\aoc day1 .\inputs\day_1.input
+```
+
+[1]: https://dotnet.microsoft.com/en-us/
