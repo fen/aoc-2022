@@ -26,8 +26,8 @@ int CalculateGroupPriority((Rucksack, Rucksack, Rucksack) group)
 }
 
 static int ToPriority(char c) => c switch {
-    >= 'a' and <= 'z' => ((int)c) - 96,
-    >= 'A' and <= 'Z' => ((int)c) - 38,
+    >= 'a' and <= 'z' => c - 96,
+    >= 'A' and <= 'Z' => c - 38,
     _ => throw new Exception("")
 };
 
@@ -41,7 +41,7 @@ async Task<List<Rucksack>> ParseRucksacksAsync(string file)
         var compartmentOne = line[0..mid];
         var compartmentTwo = line[mid..];
         var same = compartmentOne.Intersect(compartmentTwo).First();
-        rucksacks.Add(new(line, compartmentOne, compartmentTwo, same));
+        rucksacks.Add(new(line, same));
     }
     return rucksacks;
 }
@@ -53,13 +53,13 @@ static void Exit(string msg)
     Environment.Exit(-1);
 }
 
-record Rucksack(string AllItems, string CompartmentOne, string CompartmentTwo, char Same);
+record Rucksack(string AllItems, char Same);
 
-static class Ext
+internal static class Ext
 {
     public static IEnumerable<(T first, T second, T third)> ByThree<T>(this IEnumerable<T> seq)
     {
-        var enumerator = seq.GetEnumerator();
+        using var enumerator = seq.GetEnumerator();
         do {
             if (!enumerator.MoveNext()) yield break;
             var first = enumerator.Current;

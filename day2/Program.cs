@@ -8,20 +8,19 @@ if (!File.Exists(file)) Exit($"File {file} does not exist");
 var plays = await ParseAsync(file);
 
 Console.WriteLine(
-    "Total score part one: {0}", 
+    "Total score part one: {0}",
     plays.Sum(CalculateScorePartOne)
 );
 
 Console.WriteLine(
-    "Total score part two: {0}", 
+    "Total score part two: {0}",
     plays.Sum(CalculateScorePartTwo)
 );
-
 
 static int CalculateScorePartOne(Play play)
 {
     var playScore = play switch {
-        (var op, var me, _) when op == me => 3,
+        var (op, me, _) when op == me => 3,
         (Shape.Scissors, Shape.Rock, _) => 6,
         (Shape.Paper, Shape.Scissors, _) => 6,
         (Shape.Rock, Shape.Paper, _) => 6,
@@ -70,7 +69,7 @@ static int CalculateScorePartTwo(Play play)
 async Task<List<Play>> ParseAsync(string file)
 {
     var lines = await File.ReadAllLinesAsync(file);
-    
+
     List<Play> plays = new(lines.Length);
     foreach (var line in lines) {
         var (opponentShapeStr, meShapeStr) = line.Split(" ");
