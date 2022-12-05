@@ -47,21 +47,7 @@ static int CalculateScorePartTwo(Play play)
         _ => throw new Exception("Unknown play shape")
     };
 
-    var playScore = (play.Opponent, shapeToPlay) switch {
-        (var op, var me) when op == me => 3,
-        (Shape.Scissors, Shape.Rock) => 6,
-        (Shape.Paper, Shape.Scissors) => 6,
-        (Shape.Rock, Shape.Paper) => 6,
-        _ => 0
-    };
-    var shapeScore = shapeToPlay switch {
-        Shape.Rock => 1,
-        Shape.Paper => 2,
-        Shape.Scissors => 3,
-        _ => throw new Exception("Unknown Shape")
-    };
-
-    return playScore + shapeScore;
+    return CalculateScorePartOne(play with { Me = shapeToPlay });
 }
 
 async Task<List<Play>> ParseAsync(string file)
@@ -104,9 +90,9 @@ readonly record struct Play(Shape Opponent, Shape Me, Outcome Outcome);
 
 enum Shape : byte
 {
-    Rock,
-    Paper,
-    Scissors
+    Rock,       // A or X
+    Paper,      // B or Y
+    Scissors    // C or Z
 }
 
 enum Outcome : byte

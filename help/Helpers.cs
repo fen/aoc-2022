@@ -1,5 +1,8 @@
-internal static class Ext
+internal static class AdventOfCodeHelpers
 {
+    /// <summary>
+    /// Group IEnumerable sequence in a enumerable tuple of three items.
+    /// </summary>
     public static IEnumerable<(T first, T second, T third)> ByThree<T>(this IEnumerable<T> seq)
     {
         using var enumerator = seq.GetEnumerator();

@@ -4,4 +4,8 @@
           <Link>Helpers.cs</Link>
         </Compile>
     </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="AdventOfCodeHelpers" Static="True" />
+  </ItemGroup>
 </Project>

@@ -21,10 +21,7 @@ public record struct Pair(Sections First, Sections Second)
     public static Pair Parse(string value)
     {
         var (first, second) = value.Split(',');
-        return new(
-            Sections.Parse(first),
-            Sections.Parse(second)
-        );
+        return new(Sections.Parse(first), Sections.Parse(second));
     }
 
     public bool IsFullyContained => First.FullyContains(Second) || Second.FullyContains(First);

@@ -26,7 +26,7 @@ int CalculateGroupPriority((Rucksack, Rucksack, Rucksack) group)
 static int ToPriority(char c) => c switch {
     >= 'a' and <= 'z' => c - 96,
     >= 'A' and <= 'Z' => c - 38,
-    _ => throw new Exception("")
+    _ => throw new Exception("Invalid character")
 };
 
 async Task<List<Rucksack>> ParseRucksacksAsync(string file)
@@ -35,11 +35,10 @@ async Task<List<Rucksack>> ParseRucksacksAsync(string file)
     List<Rucksack> rucksacks = new();
     foreach (var line in lines) {
         var mid = line.Length/2;
-
-        var compartmentOne = line[0..mid];
-        var compartmentTwo = line[mid..];
-        var same = compartmentOne.Intersect(compartmentTwo).First();
-        rucksacks.Add(new(line, same));
+        rucksacks.Add(new(
+            line, 
+            line[0..mid].Intersect(line[mid..]).First()
+        ));
     }
     return rucksacks;
 }
