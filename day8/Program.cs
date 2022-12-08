@@ -6,7 +6,6 @@
 var grid = await Grid.ParseAsync(file);
 
 var edges = (grid.RowCount * 2 + grid.ColumnCount * 2)-4; // -4 so we don't double count the edges
-Console.WriteLine(edges);
 Console.WriteLine("Part One: {0}", grid.GetTrees().Count(c => c.IsVisible()) + edges);
 Console.WriteLine("Part Two: {0}", grid.GetTrees().Max(c => c.GetScenicScore()));
 
