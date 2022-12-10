@@ -20,6 +20,10 @@ internal static class AdventOfCodeHelpers
     public static void Deconstruct<T>(this T[] seq, out T first, out T second)
     {
         first = seq[0];
-        second = seq[1];
+        if (seq.Length == 1) {
+            second = default;
+        } else {
+            second = seq[1];
+        }
     }
 }
