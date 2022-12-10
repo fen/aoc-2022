@@ -2,7 +2,7 @@
 if [%1] equ [] goto :error
 if [%2] equ [] goto :error
 
-dotnet run -c Release --project %1\%1.csproj -- %2
+dotnet run --property:WarningLevel=0 -c Release --project %1\%1.csproj -- %2
 goto :done
 
 :error

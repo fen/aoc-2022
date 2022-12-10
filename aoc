@@ -5,5 +5,5 @@ if [ ! "$1" ] || [ ! "$2" ]; then
     exit -1
 fi
 
-dotnet run -c Release --project $1/$1.csproj -- $2
+dotnet run --property:WarningLevel=0 -c Release --project $1/$1.csproj -- $2
 exit 0

@@ -7,15 +7,15 @@
 __( :  )|___
 ```
 
--   [Day 1](./day01/Program.cs)
--   [Day 2](./day02/Program.cs)
--   [Day 3](./day03/Program.cs)
--   [Day 4](./day04/Program.cs)
--   [Day 5](./day05/Program.cs)
--   [Day 6](./day06/Program.cs)
--   [Day 7](./day07/Program.cs)
--   [Day 8](./day08/Program.cs)
--   [Day 9](./day09/Program.cs)
+-   [Day 01](./day01/Program.cs)
+-   [Day 02](./day02/Program.cs)
+-   [Day 03](./day03/Program.cs)
+-   [Day 04](./day04/Program.cs)
+-   [Day 05](./day05/Program.cs)
+-   [Day 06](./day06/Program.cs)
+-   [Day 07](./day07/Program.cs)
+-   [Day 08](./day08/Program.cs)
+-   [Day 09](./day09/Program.cs)
 -   [Day 10](./day10/Program.cs)
 
 Prerequisite to run [.NET 7][1]
