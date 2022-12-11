@@ -1,3 +1,6 @@
+using System.Diagnostics.CodeAnalysis;
+using System.Numerics;
+
 internal static class AdventOfCodeHelpers
 {
     /// <summary>
@@ -14,7 +17,7 @@ internal static class AdventOfCodeHelpers
             enumerator.MoveNext();
             var third = enumerator.Current;
             yield return (first, second, third);
-        } while(true);
+        } while (true);
     }
 
     public static void Deconstruct<T>(this T[] seq, out T first, out T second)
@@ -25,5 +28,35 @@ internal static class AdventOfCodeHelpers
         } else {
             second = seq[1];
         }
+    }
+
+    public static bool TryRemoveFirst<T>(this List<T> items, [NotNullWhen(true)] out T? item)
+    {
+        if (items.Count == 0) {
+            item = default;
+            return false;
+        }
+
+        item = items[0];
+        if (item is null) throw new();
+        items.RemoveAt(0);
+        return true;
+    }
+
+    public static long Product(this IEnumerable<long> source)
+        => Product<long, long>(source);
+    public static UInt128 Product(this IEnumerable<UInt128> source)
+        => Product<UInt128, UInt128>(source);
+
+    private static TResult Product<TSource, TResult>(this IEnumerable<TSource> source)
+        where TSource : struct, INumber<TSource>
+        where TResult : struct, INumber<TResult>
+    {
+        TResult sum = TResult.One;
+        foreach (TSource value in source) {
+            checked { sum *= TResult.CreateChecked(value); }
+        }
+
+        return sum;
     }
 }

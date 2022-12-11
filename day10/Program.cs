@@ -8,7 +8,9 @@ var instructions = await ParseAsync(file);
     var display = new SegmentDisplay();
     var cpu = new Cpu(instructions, display);
     var refresh = new[] { 20, 60, 100, 140, 180, 220 };
-    Console.WriteLine("Part One: {0}", cpu.Run(refresh).Zip(refresh).Sum(a => a.First * a.Second));
+    Console.WriteLine(
+        "Part One: {0}", 
+        cpu.Run(refresh).Zip(refresh).Sum(a => a.First * a.Second));
 }
 
 {
