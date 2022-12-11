@@ -38,7 +38,7 @@ Monkey (?<monkey>\d+):
 
     return notes;
 
-    Func<long, long> ExpressionBuilder(string left, string op, string right)
+    static Func<long, long> ExpressionBuilder(string left, string op, string right)
     {
         ParameterExpression old = Expression.Parameter(typeof(long), "old");
         return Expression.Lambda<Func<long, long>>(
@@ -65,7 +65,7 @@ Monkey (?<monkey>\d+):
     }
 }
 
-long[] Count(List<Monkey> monkeys, int rounds, bool worryLess)
+static long[] Count(List<Monkey> monkeys, int rounds, bool worryLess)
 {
     long modules = monkeys.Select(n => n.DivisibleBy).Product();
     var counts = new long[monkeys.Count];
