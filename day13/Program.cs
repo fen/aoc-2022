@@ -26,18 +26,11 @@ Console.WriteLine(
 
 static async Task<List<Item>> ReadAsync(string file)
 {
-    List<Item> result = new();
-    var input = await File.ReadAllTextAsync(file);
-    var pairs = input.Split("\r\n\r\n");
-    foreach (var pair in pairs) {
-        var (one, two) = pair.Split("\r\n");
-        int index = 0;
-        result.Add(Parse(one, ref index));
-        index = 0;
-        result.Add(Parse(two, ref index));
-    }
-
-    return result;
+    return (await File.ReadAllLinesAsync(file)).Where(l => l.Length > 0)
+        .Select(p => {
+            int index = 0;
+            return Parse(p, ref index);
+        }).ToList();
 
     static Item Parse(ReadOnlySpan<char> input, ref int index)
     {
