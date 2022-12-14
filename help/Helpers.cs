@@ -35,6 +35,25 @@ internal static class AdventOfCodeHelpers
         } while (true);
     }
 
+    public static IEnumerable<(T First, T Second)> Pair<T>(this IEnumerable<T> seq)
+    {
+        using var enumerator = seq.GetEnumerator();
+        enumerator.MoveNext();
+        var first = enumerator.Current;
+        do {
+            if (!enumerator.MoveNext()) yield break;
+            var second = enumerator.Current;
+            yield return (first, second);
+            first = second;
+
+        } while (true);
+    }
+
+    public static void Each<T>(this IEnumerable<T> items, Action<T> action)
+    {
+        foreach (var item in items) action(item);
+    }
+
     public static void Deconstruct<T>(this T[] seq, out T first, out T second)
     {
         first = seq[0];
