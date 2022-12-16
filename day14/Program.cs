@@ -105,23 +105,5 @@ class Grid : IEnumerable<Point>
     }
 
     public IEnumerator<Point> GetEnumerator() => _items.Keys.GetEnumerator();
-    IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
-}
-
-record struct Point(int X, int Y)
-{
-    public static readonly Point NAP = new(int.MinValue, int.MinValue);
-
-    public static implicit operator Point((int, int) p) => new(p.Item1, p.Item2);
-
-    public static Point operator +(Point left, Point right)
-        => new(X: left.X + right.X, Y: left.Y + right.Y);
-
-    public static Point operator -(Point left, Point right)
-        => new(X: left.X - right.X, Y: left.Y - right.Y);
-
-    public static Point operator /(Point left, Point right)
-        => new(X: left.X / Math.Max(right.X, 1), Y: left.Y / Math.Max(right.Y, 1));
-
-    public Point Abs() => new(Math.Abs(X), Math.Abs(Y));
+    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 }

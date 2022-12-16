@@ -21,6 +21,7 @@ __( :  )|___
 -   [Day 12](./day12/Program.cs)
 -   [Day 13](./day13/Program.cs)
 -   [Day 14](./day14/Program.cs)
+-   [Day 15](./day15/Program.cs)
 
 Prerequisite to run [.NET 7][1]
 
