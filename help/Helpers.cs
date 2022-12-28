@@ -54,6 +54,23 @@ internal static class AdventOfCodeHelpers
         foreach (var item in items) action(item);
     }
 
+    public static void Each<T>(this IEnumerable<T> items, Action<T, int> action)
+    {
+        using var enumerator = items.GetEnumerator();
+        for (int i = 0; enumerator.MoveNext(); i++) {
+            action(enumerator.Current, i);
+        }
+    }
+
+    public static IEnumerable<T> TakeAt<T>(this IEnumerable<T> items, params int[] indexes)
+    {
+        using var enumerator = items.GetEnumerator();
+        for (int i = 0; enumerator.MoveNext(); i++) {
+            if (indexes.Contains(i)) 
+            yield return enumerator.Current;
+        }
+    }
+
     public static void Deconstruct<T>(this T[] seq, out T first, out T second)
     {
         first = seq[0];
