@@ -13,7 +13,7 @@ int SolveOne(IEnumerable<Blueprint> input)
     var sum = 0;
 
     input.Each((x, i) => {
-        var geodes = FindBestGeode(x, 24);
+        var geodes = FindGeode(x, 24);
         sum += geodes * (i + 1);
 
         Console.WriteLine($"Blueprint {i + 1} - {geodes} geodes");
@@ -24,7 +24,7 @@ int SolveOne(IEnumerable<Blueprint> input)
 
 int SolveTwo(IEnumerable<Blueprint> input)
 {
-    var result = input.Take(3).Select(i => FindBestGeode(i, 32)).ToArray();
+    var result = input.Take(3).Select(i => FindGeode(i, 32)).ToArray();
     foreach (var i in result) {
         Console.WriteLine($"{i} geodes");
     }
