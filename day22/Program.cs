@@ -1,4 +1,8 @@
-﻿var file = "../inputs/day_22.input";
+﻿if (args is not [var file] || !File.Exists(file)) {
+    Console.WriteLine("day22 <input>");
+    return;
+}
+
 Console.WriteLine(Solve(Parse(file)));
 
 (char[][] map, int[] distances, char[] turns) Parse(string file)
